@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace GlobalPay.helpers
 {
-    public class Rest {
+    public class Rest { 
         public async Task<string> HttpWebRequestCall(string requestUrl, object jsonRequest, string jsonMethod,
             string jsonContentType) {
             try {

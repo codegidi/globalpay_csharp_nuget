@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GlobalPay.Transaction
+namespace Globalpay.Net.Models
 {
-    class Register
+    class Class1
     {
-
     }
 }

@@ -5,7 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="TransactionRegistration\" />
+    <Compile Remove="API.cs" />
+    <Compile Remove="Net.Interfaces\Rest.cs" />
+    <Compile Remove="Net.Models\Class1.cs" />
+    <Compile Remove="Net.Models\Customer.cs" />
+    <Compile Remove="Net.Models\Product.cs" />
+    <Compile Remove="Net.Transaction\Register.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Net.Models\TransactionRegistrationRequest.cs" />
+    <Compile Include="Net.Transaction\Transactions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
 </Project>

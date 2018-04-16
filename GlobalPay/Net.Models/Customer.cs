@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GlobalPay.models
+namespace GlobalPay.Net.Models
 {
     class Customer
     {
