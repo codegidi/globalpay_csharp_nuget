@@ -1,6 +1,6 @@
 # Globalpay.Net
 
-Paystack.Net.SDK is a library for using the [Paystack](https://paystack.com) API from .Net.
+Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 
 
 // ### Prerequisites
