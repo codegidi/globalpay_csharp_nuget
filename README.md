@@ -3,78 +3,78 @@
 Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 
 
-// ### Prerequisites
+<!-- ### Prerequisites
 
-// This Library require .Net framework 4.6 or higher
-
-
-
-// ### Installing
-// Install this library from [Nuget](https://www.nuget.org/packages/Paystack.Net.SDK)
-
-// ### Sample web Application
-
-// [Check out the sample web Application](https://github.com/developerslearnit/Paystack.Net.SampleApp)
+ This Library require .Net framework 4.6 or higher
 
 
-// ### Usage
 
-// #### Transactions
+ ### Installing
+ Install this library from [Nuget](https://www.nuget.org/packages/Paystack.Net.SDK)
 
-// First, Instantiate PaystackTransactionAPI:
-// Add required using
+ ### Sample web Application
 
-// using Paystack.Net.SDK.Transactions;
+ [Check out the sample web Application](https://github.com/developerslearnit/Paystack.Net.SampleApp)
 
 
-// ##### Transaction Initialization
-//    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-//    var response = await paystackTransactionAPI.InitializeTransaction("customer@gmail.com", 500000);
-//    if(response.status){
-//        Response.AddHeader("Access-Control-Allow-Origin", "*");
-//        Response.AppendHeader("Access-Control-Allow-Origin", "*");
-//		Response.Redirect(response.data.authorization_url);
-//    }else{
-//	//Handle Error
-//	}
+ ### Usage
 
-// ##### Transaction Verification
-//    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-//    var response = await paystackTransactionAPI.VerifyTransaction("cipyd2ikxw");
+ #### Transactions
 
-// #### Transaction Listings
-//    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-//    var response = await paystackTransactionAPI.ListTransactions();
+ First, Instantiate PaystackTransactionAPI:
+ Add required using
 
-// #### Fetch Transaction
+ using Paystack.Net.SDK.Transactions;
 
-//    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-//    var response = await paystackTransactionAPI.FetchTransaction(9149218);
 
-// #### Charge Authorization
+ ##### Transaction Initialization
+    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
+    var response = await paystackTransactionAPI.InitializeTransaction("customer@gmail.com", 500000);
+    if(response.status){
+        Response.AddHeader("Access-Control-Allow-Origin", "*");
+        Response.AppendHeader("Access-Control-Allow-Origin", "*");
+		Response.Redirect(response.data.authorization_url);
+    }else{
+	//Handle Error
+	}
 
-//    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-//    var response = await paystackTransactionAPI.ChargeAuthorization("AUTH_lqnf8xjy5j", "mark2kk@gmail.com", 5000);
+ ##### Transaction Verification
+    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
+    var response = await paystackTransactionAPI.VerifyTransaction("cipyd2ikxw");
 
-// #### View Transaction Timeline
+ #### Transaction Listings
+    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
+    var response = await paystackTransactionAPI.ListTransactions();
 
-//    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-//    var response = await paystackTransactionAPI.TransactionTimeline("cipyd2ikxw");
+ #### Fetch Transaction
+
+    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
+    var response = await paystackTransactionAPI.FetchTransaction(9149218);
+
+ #### Charge Authorization
+
+    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
+    var response = await paystackTransactionAPI.ChargeAuthorization("AUTH_lqnf8xjy5j", "mark2kk@gmail.com", 5000);
+
+ #### View Transaction Timeline
+
+    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
+    var response = await paystackTransactionAPI.TransactionTimeline("cipyd2ikxw");
     
 
-// #### Customers
+ #### Customers
 
-// Requires using Paystack.Net.SDK.Customers namespace and an instance of PaystackCustomers
+ Requires using Paystack.Net.SDK.Customers namespace and an instance of PaystackCustomers
 
-// #### Create Customer
-//     var paystackCustomerAPI = new PaystackCustomers(YOUR_SECRET_KEY_HERE);
-//     var response = await paystackCustomerAPI.CreateCustomer("person@live.com", "John", "Doe", "08098786543");
+ #### Create Customer
+     var paystackCustomerAPI = new PaystackCustomers(YOUR_SECRET_KEY_HERE);
+     var response = await paystackCustomerAPI.CreateCustomer("person@live.com", "John", "Doe", "08098786543");
 
-// #### List Customers
-//     var paystackCustomerAPI = new PaystackCustomers(YOUR_SECRET_KEY_HERE);
-//    var response = await paystackCustomerAPI.ListCustomers();
+ #### List Customers
+     var paystackCustomerAPI = new PaystackCustomers(YOUR_SECRET_KEY_HERE);
+    var response = await paystackCustomerAPI.ListCustomers();
 
-## Authors
+## Authors -->
 
 * **Mayowa Anibaba** -  [May Davison Tech](http://www.mdt.com.ng/)
 
