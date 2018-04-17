@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GlobalPay.Net.Interfaces
 {
-    public class ITransaction
+    public interface ITransaction
     {
-        Task<TransactionRegistrationResponse> RegisterTransaction(TransactionRegistrationRequest transactionRegistrationRequest);
+        Task<TransactionRegistrationResponse> InitializeTransaction(string returnurl, string merchantreference, string description, string totalamount, string currencycode, string customerEmail, string customerNumber);
 
         //Task<TransactionResponseModel> VerifyTransaction(string reference);
     }
