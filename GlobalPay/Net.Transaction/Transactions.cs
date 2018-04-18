@@ -1,41 +1,41 @@
 ﻿using System.Text;
-using GlobalPay.Net.Interfaces;
-using GlobalPay.Net.Models;
 using System.Threading.Tasks;
-using GlobalPay.Net.Globals;
 using System.Net.Http;
 using Newtonsoft.Json;
+using GlobalPay.Net.Globals;
+using GlobalPay.Net.Interfaces;
+using GlobalPay.Net.Models;
 
 namespace GlobalPay.Net.Transaction
 {
     class Transactions : ITransaction {
 
-        public async Task<TransactionRegistrationResponse> InitializeTransaction(string returnurl, string merchantreference, string description, string totalamount, string currencycode, string customerEmail, string customerNumber, string customerFirstName, string customerLastName) {
+        public async Task<TransactionRegistrationResponse> InitializeTransaction(string _returnurl, string _merchantreference, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName) {
             var client = HttpConnection.CreateClient();
-            var customer = new Customer {
-                email = customerEmail,
-                firstname = customerFirstName,
-                lastname = customerLastName,
-                mobile = customerNumber,
+            var _customer = new Customer {
+                email = _customerEmail,
+                firstname = _customerFirstName,
+                lastname = _customerLastName,
+                mobile = _customerNumber,
             };
 
             var transactionRegistrationRequest = new TransactionRegistrationRequest {
-                returnurl = returnurl,
+                returnurl = _returnurl,
                 customerip = "",
-                merchantreference = merchantreference,
-                description = description,
-                currencycode = currencycode,
-                totalamount = totalamount,
+                merchantreference = _merchantreference,
+                description = _description,
+                currencycode = _currencycode,
+                totalamount = _totalamount,
                 paymentmethod = "card",
                 transactionType = "Payment",
                 connectionmode = "redirect",
-                customer = customer
+                customer = _customer
             };
 
 
             var requestJson = JsonConvert.SerializeObject(transactionRegistrationRequest);
             var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("transaction/initialize", stringContent);
+            var response = await client.PostAsync("/api/TransactionAPI", stringContent);
             var responseJson = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<TransactionRegistrationResponse>(responseJson);
