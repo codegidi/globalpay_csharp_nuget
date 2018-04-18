@@ -21,11 +21,12 @@ using System.Threading.Tasks;
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue(Constants.ContentTypeHeaderJson));
 
-                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(BaseConstants.AuthorizationHeaderType, secretKey);
+            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(BaseConstants.AuthorizationHeaderType, secretKey);
 
-                return client;
+            return client;
             }
         }
-    }
+
+}
 
 

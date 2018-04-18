@@ -14,9 +14,10 @@ namespace GlobalPay.Net.Models
         public string currencycode { get; set; }
         public string totalamount { get; set; }
         public string paymentmethod { get; set; }
+        public string transactionType { get; set; }
         public string connectionmode { get; set; }
         public Customer customer { get; set; }
-        public Product[] product { get; set; }
+        //public Product[] product { get; set; }
     }
 
     public class Product {

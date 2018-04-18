@@ -8,8 +8,7 @@ namespace GlobalPay.Net.Interfaces
 {
     public interface ITransaction
     {
-        Task<TransactionRegistrationResponse> InitializeTransaction(string returnurl, string merchantreference, string description, string totalamount, string currencycode, string customerEmail, string customerNumber);
-
+        Task<TransactionRegistrationResponse> InitializeTransaction(string returnurl, string merchantreference, string description, string totalamount, string currencycode, string customerEmail, string customerNumber, string customerFirstName, string customerLastName);
         //Task<TransactionResponseModel> VerifyTransaction(string reference);
     }
 }
