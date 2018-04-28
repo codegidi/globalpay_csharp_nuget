@@ -13,7 +13,7 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
  Install this library from [Nuget](https://www.nuget.org/packages/Globalpay.Net.SDK)
 
 ### Usage
- The steps for carrying out a transaction is as follows:
+    The steps for carrying out a transaction is as follows:
     1. Get an access token by calling the Client Authorisation method
     2. Use the access_token to send initiate your transaction by calling the Transaction initiaion method
     3. Redirect to GlobalPay transaction interface using the redirectUri retured in the Transaction initiation call
@@ -22,11 +22,11 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 
 
 #### Client Authorisation
- using GlobalPay.Net;
- var globalPayAuthentication = new GlobalPayAuthentication();
- var response = await globalPayAuthentication.AuthenticateClient(string _username, string _password, string _clientId, string _clientSecret)
+    using GlobalPay.Net;
+    var globalPayAuthentication = new GlobalPayAuthentication();
+    var response = await globalPayAuthentication.AuthenticateClient(string _username, string _password, string _clientId, string _clientSecret)
 
- var access_token = response.access_token;
+    var access_token = response.access_token;
 
 
 ##### Transaction Initialization
@@ -48,7 +48,7 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
     var response = await globalPayTransactions.RetrieveTransaction(string _merchantId, string _merchantReference, string _transactionReference)
 
 
-## Authors -->
+## Authors
 
 * **Mayowa Anibaba** -  [May Davison Tech](http://www.mdt.com.ng/)
 
