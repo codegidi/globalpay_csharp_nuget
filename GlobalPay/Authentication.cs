@@ -7,9 +7,9 @@ using GlobalPay.Net.Globals;
 using GlobalPay.Net.Interfaces;
 using GlobalPay.Net.Models;
 
-namespace GlobalPay.Net.Transaction
+namespace GlobalPay.Net
 {
-    public class Authentication : IAuthentication
+    public class GlobalPayAuthentication : IAuthentication
     {
         public async Task<ClientAuthenticationResponse> AuthenticateClient(string _username, string _password, string _clientId, string _clientSecret) {
             var client = HttpConnection.callClient();

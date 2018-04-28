@@ -3,82 +3,56 @@
 Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 
 
-<!-- ### Prerequisites
+### Prerequisites
 
  This Library require .Net framework 4.6 or higher
 
 
 
- ### Installing
- Install this library from [Nuget](https://www.nuget.org/packages/Paystack.Net.SDK)
-
- ### Sample web Application
-
- [Check out the sample web Application](https://github.com/developerslearnit/Paystack.Net.SampleApp)
-
+### Installing
+ Install this library from [Nuget](https://www.nuget.org/packages/Globalpay.Net.SDK)
 
  ### Usage
+ The steps for carrying out a transaction is as follows:
+    1. Get an access token by calling the Client Authorisation method
+    2. Use the access_token to send initiate your transaction by calling the Transaction initiaion method
+    3. Redirect to GlobalPay transaction interface using the redirectUri retured in the Transaction initiation call
+    4. After transaction has been done, you will be redirected to the provided redirectUrl provided with the transactionReference as a querystring
+    5. Validate the result by using the Retrieve transaction call
 
- #### Transactions
 
- First, Instantiate PaystackTransactionAPI:
- Add required using
+#### Client Authorisation
+ using GlobalPay.Net;
+ var globalPayAuthentication = new GlobalPayAuthentication();
+ var response = await globalPayAuthentication.AuthenticateClient(string _username, string _password, string _clientId, string _clientSecret)
 
- using Paystack.Net.SDK.Transactions;
+ var access_token = response.access_token;
 
 
- ##### Transaction Initialization
-    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-    var response = await paystackTransactionAPI.InitializeTransaction("customer@gmail.com", 500000);
-    if(response.status){
+##### Transaction Initialization
+    using GlobalPay.Net;
+    var globalPayTransactions = new GlobalPayTransactions(ACCESS_TOKEN);
+    var response = await globalPayTransactions.InitializeTransaction(string _returnurl, string _merchantreference, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName)
+
+    if(response.status.statusCode){
         Response.AddHeader("Access-Control-Allow-Origin", "*");
         Response.AppendHeader("Access-Control-Allow-Origin", "*");
-		Response.Redirect(response.data.authorization_url);
+		Response.Redirect(response.redirectUri);
     }else{
 	//Handle Error
 	}
 
- ##### Transaction Verification
-    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-    var response = await paystackTransactionAPI.VerifyTransaction("cipyd2ikxw");
+##### Transaction Verification
+    using GlobalPay.Net;
+    var globalPayTransactions = new GlobalPayTransactions(ACCESS_TOKEN);
+    var response = await globalPayTransactions.RetrieveTransaction(string _merchantId, string _merchantReference, string _transactionReference)
 
- #### Transaction Listings
-    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-    var response = await paystackTransactionAPI.ListTransactions();
-
- #### Fetch Transaction
-
-    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-    var response = await paystackTransactionAPI.FetchTransaction(9149218);
-
- #### Charge Authorization
-
-    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-    var response = await paystackTransactionAPI.ChargeAuthorization("AUTH_lqnf8xjy5j", "mark2kk@gmail.com", 5000);
-
- #### View Transaction Timeline
-
-    var paystackTransactionAPI = new PaystackTransaction(YOUR_SECRET_KEY_HERE);
-    var response = await paystackTransactionAPI.TransactionTimeline("cipyd2ikxw");
-    
-
- #### Customers
-
- Requires using Paystack.Net.SDK.Customers namespace and an instance of PaystackCustomers
-
- #### Create Customer
-     var paystackCustomerAPI = new PaystackCustomers(YOUR_SECRET_KEY_HERE);
-     var response = await paystackCustomerAPI.CreateCustomer("person@live.com", "John", "Doe", "08098786543");
-
- #### List Customers
-     var paystackCustomerAPI = new PaystackCustomers(YOUR_SECRET_KEY_HERE);
-    var response = await paystackCustomerAPI.ListCustomers();
 
 ## Authors -->
 
 * **Mayowa Anibaba** -  [May Davison Tech](http://www.mdt.com.ng/)
 
 
-// ## License
+## License
 
 This project is licensed under the MIT License
