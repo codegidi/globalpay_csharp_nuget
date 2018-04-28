@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
     namespace GlobalPay.Net.Globals {
         public static class HttpConnection {
-            public static HttpClient CreateClient(/*string secretKey*/) {
+            public static HttpClient call(string secretKey) {
                 //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
                 var client = new HttpClient() {
-                    BaseAddress = new Uri(Constants.BaseEndURlLive)
+                    BaseAddress = new Uri(Constants.BaseEndURlStaging)
                 };
 
 
@@ -21,11 +21,26 @@ using System.Threading.Tasks;
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue(Constants.ContentTypeHeaderJson));
 
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(BaseConstants.AuthorizationHeaderType, secretKey);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Constants.AuthorizationHeaderType, secretKey);
 
             return client;
             }
+
+        public static HttpClient callClient() {
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+            var client = new HttpClient() {
+                BaseAddress = new Uri(Constants.AuthURLStaging)
+            };
+
+
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue(Constants.ContentTypeHeaderJson));
+
+            return client;
         }
+    }
 
 }
 

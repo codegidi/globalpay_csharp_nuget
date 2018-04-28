@@ -4,12 +4,12 @@ using System.Text;
 
 namespace GlobalPay.Net.Models
 {
-    public class TransactionRegistrationRequest
-    {
+    public class TransactionRegistrationRequest {
         public string name { get; set; }
         public string returnurl { get; set; }
         public string customerip { get; set; }
         public string merchantreference { get; set; }
+        public string merchantid { get; set; }
         public string description { get; set; }
         public string currencycode { get; set; }
         public string totalamount { get; set; }
@@ -31,5 +31,23 @@ namespace GlobalPay.Net.Models
         public string mobile { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
+    }
+
+    public class TransactionRegistrationResponse {
+        public Status status { get; set; }
+        public string redirectUri { get; set; }
+        public string transactionReference { get; set; }
+    }
+
+    public class Status {
+        public string statusCode { get; set; }
+        public ErrorDescription errorDescription { get; set; }
+    }
+
+    public class ErrorDescription {
+        public bool iserror { get; set; }
+        public string errorcode { get; set; }
+        public string errorparameter { get; set; }
+        public string reason { get; set; }
     }
 }

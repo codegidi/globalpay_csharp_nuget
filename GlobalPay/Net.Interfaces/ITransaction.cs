@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GlobalPay.Net.Models;
+﻿using GlobalPay.Net.Models;
 using System.Threading.Tasks;
 
 namespace GlobalPay.Net.Interfaces
 {
     public interface ITransaction
     {
-        Task<TransactionRegistrationResponse> InitializeTransaction(string returnurl, string merchantreference, string description, string totalamount, string currencycode, string customerEmail, string customerNumber, string customerFirstName, string customerLastName);
-        //Task<TransactionResponseModel> VerifyTransaction(string reference);
+        Task<TransactionRegistrationResponse> InitializeTransaction(string returnUrl, string merchantReference, string description, string totalAmount, string currencyCode, string customerEmail, string customerNumber, string customerFirstName, string customerLastName, string token);
+        Task<RetrieveTransactionResponse> RetrieveTransaction(string merchantId, string merchantReference, string transactionReference, string token);
     }
 }
