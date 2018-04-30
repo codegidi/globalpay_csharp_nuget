@@ -12,7 +12,6 @@
     <Compile Remove="Net.Models\Product.cs" />
     <Compile Remove="Net.Models\RetrieveTransactionResponse.cs" />
     <Compile Remove="Net.Models\TransactionRegistrationRequest.cs" />
-    <Compile Remove="Net.Transaction\Register.cs" />
   </ItemGroup>
 
   <ItemGroup>

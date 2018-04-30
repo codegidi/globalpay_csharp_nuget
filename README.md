@@ -14,11 +14,11 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 
 ### Usage
     The steps for carrying out a transaction is as follows:
-    1. Get an access token by calling the Client Authorisation method
-    2. Use the access_token to send initiate your transaction by calling the Transaction initiaion method
-    3. Redirect to GlobalPay transaction interface using the redirectUri retured in the Transaction initiation call
-    4. After transaction has been done, you will be redirected to the provided redirectUrl provided with the transactionReference as a querystring
-    5. Validate the result by using the Retrieve transaction call
+*    1. Get an access token by calling the Client Authorisation method
+*    2. Use the access_token to send initiate your transaction by calling the Transaction initiaion method
+*    3. Redirect to GlobalPay transaction interface using the redirectUri retured in the Transaction initiation call
+*    4. After transaction has been done, you will be redirected to the provided redirectUrl provided with the transactionReference as a querystring
+*    5. Validate the result by using the Retrieve transaction call
 
 
 #### Client Authorisation
