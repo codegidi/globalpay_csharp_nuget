@@ -21,10 +21,10 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 *    5. Validate the result by using the Retrieve transaction call
 
 
-#### Client Authorisation
+#### Client Authentication
     using GlobalPay.Net;
     var globalPayAuthentication = new GlobalPayAuthentication();
-    var response = await globalPayAuthentication.AuthenticateClient(string _username, string _password, string _clientId, string _clientSecret)
+    var response = await globalPayAuthentication.AuthenticateClient(string _clientId, string _clientSecret)
 
     var access_token = response.access_token;
 
@@ -47,12 +47,3 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
     var globalPayTransactions = new GlobalPayTransactions(ACCESS_TOKEN);
     var response = await globalPayTransactions.RetrieveTransaction(string _merchantId, string _merchantReference, string _transactionReference)
 
-
-## Authors
-
-* **Mayowa Anibaba** -  [May Davison Tech](http://www.mdt.com.ng/)
-
-
-## License
-
-This project is licensed under the MIT License
