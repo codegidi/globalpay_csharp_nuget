@@ -9,11 +9,18 @@ using System.Threading.Tasks;
 
     namespace GlobalPay.Net.Globals {
         public static class HttpConnection {
-            public static HttpClient call(string secretKey) {
-                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+        public static string baseURL = Constants.BaseEndURlStaging;
+
+        public static HttpClient call(string secretKey, bool isLive) {
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            
+            if (isLive) {
+                baseURL =  Constants.BaseEndURlLive;
+            }
 
                 var client = new HttpClient() {
-                    BaseAddress = new Uri(Constants.BaseEndURlStaging)
+                    BaseAddress = new Uri(baseURL)
                 };
 
 
@@ -26,11 +33,15 @@ using System.Threading.Tasks;
             return client;
             }
 
-        public static HttpClient callClient() {
+        public static HttpClient callClient(bool isLive) {
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
+            if (isLive) {
+                baseURL = Constants.BaseEndURlLive;
+            }
+
             var client = new HttpClient() {
-                BaseAddress = new Uri(Constants.AuthURLStaging)
+                BaseAddress = new Uri(baseURL)
             };
 
 

@@ -11,8 +11,8 @@ namespace GlobalPay.Net
 {
     public class GlobalPayAuthentication : IAuthentication
     {
-        public async Task<ClientAuthenticationResponse> AuthenticateClient(string _clientId, string _clientSecret) {
-            var client = HttpConnection.callClient();
+        public async Task<ClientAuthenticationResponse> AuthenticateClient(string _clientId, string _clientSecret, bool isLive = false) {
+            var client = HttpConnection.callClient(isLive);
 
             var bodyKeyValues = new List<KeyValuePair<string, string>>();
             bodyKeyValues.Add(new KeyValuePair<string, string>("client_id", _clientId));

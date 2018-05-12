@@ -5,7 +5,7 @@ namespace GlobalPay.Net.Interfaces
 {
     public interface IAuthentication
     {
-        Task<ClientAuthenticationResponse> AuthenticateClient(string clientId, string clientSecret);
+        Task<ClientAuthenticationResponse> AuthenticateClient(string clientId, string clientSecret, bool isLive);
 
     }
 }

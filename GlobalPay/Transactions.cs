@@ -16,8 +16,8 @@ namespace GlobalPay.Net
             this._token = token;
         }
 
-        public async Task<TransactionRegistrationResponse> InitializeTransaction(string _returnurl, string _merchantreference, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName) {
-            var client = HttpConnection.call(_token);
+        public async Task<TransactionRegistrationResponse> InitializeTransaction(string _returnurl, string _merchantreference, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName, bool isLive) {
+            var client = HttpConnection.call(_token, isLive);
             var _customer = new Customer {
                 email = _customerEmail,
                 firstname = _customerFirstName,
@@ -46,8 +46,8 @@ namespace GlobalPay.Net
             return JsonConvert.DeserializeObject<TransactionRegistrationResponse>(responseJson);
         }
 
-        public async Task<RetrieveTransactionResponse> RetrieveTransaction(string _merchantId, string _merchantReference, string _transactionReference) {
-            var client = HttpConnection.call(_token);
+        public async Task<RetrieveTransactionResponse> RetrieveTransaction(string _merchantId, string _merchantReference, string _transactionReference, bool isLive) {
+            var client = HttpConnection.call(_token, isLive);
             var _retrieveTransactionRequest = new RetrieveTransactionRequest {
                 merchantid = _merchantId,
                 merchantreference = _merchantReference,
