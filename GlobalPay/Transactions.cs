@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using GlobalPay.Net.Globals;
 using GlobalPay.Net.Interfaces;
 using GlobalPay.Net.Models;
+using System.Collections.Generic;
 
 namespace GlobalPay.Net
 {
@@ -18,24 +19,34 @@ namespace GlobalPay.Net
 
         public async Task<TransactionRegistrationResponse> InitializeTransaction(string _returnurl, string _merchantreference, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName, bool isLive) {
             var client = HttpConnection.call(_token, isLive);
+            List<Product> _products = new List<Product>();
+
+            var _product = new Product {
+                Name = _description,
+                Quantity = "1",
+                Unitprice = _totalamount
+            };
+            _products.Add(_product);
+
             var _customer = new Customer {
-                email = _customerEmail,
-                firstname = _customerFirstName,
-                lastname = _customerLastName,
-                mobile = _customerNumber,
+                Email = _customerEmail,
+                Firstname = _customerFirstName,
+                Lastname = _customerLastName,
+                Mobile = _customerNumber,
             };
 
             var transactionRegistrationRequest = new TransactionRegistrationRequest {
-                returnurl = _returnurl,
-                customerip = "",
-                merchantreference = _merchantreference,
-                description = _description,
-                currencycode = _currencycode,
-                totalamount = _totalamount,
-                paymentmethod = "card",
-                transactionType = "Payment",
-                connectionmode = "redirect",
-                customer = _customer
+                Returnurl = _returnurl,
+                Customerip = "",
+                Merchantreference = _merchantreference,
+                Description = _description,
+                Currencycode = _currencycode,
+                Totalamount = _totalamount,
+                Paymentmethod = "card",
+                TransactionType = "Payment",
+                Connectionmode = "redirect",
+                Customer = _customer,
+                Product = _products
             };
 
             var requestJson = JsonConvert.SerializeObject(transactionRegistrationRequest);
@@ -49,9 +60,9 @@ namespace GlobalPay.Net
         public async Task<RetrieveTransactionResponse> RetrieveTransaction(string _merchantId, string _merchantReference, string _transactionReference, bool isLive) {
             var client = HttpConnection.call(_token, isLive);
             var _retrieveTransactionRequest = new RetrieveTransactionRequest {
-                merchantid = _merchantId,
-                merchantreference = _merchantReference,
-                transactionreference = _transactionReference,
+                Merchantid = _merchantId,
+                Merchantreference = _merchantReference,
+                Transactionreference = _transactionReference,
             };
 
 
