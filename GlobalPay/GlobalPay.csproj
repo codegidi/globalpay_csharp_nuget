@@ -2,12 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <Authors>Codegidi</Authors>
+    <Company>May Davison Tech</Company>
+    <Product>GlobalPay</Product>
+    <PackageId>GlobalPay.Net.SDK</PackageId>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="API.cs" />
     <Compile Remove="Net.Interfaces\Rest.cs" />
-    <Compile Remove="Net.Models\Class1.cs" />
     <Compile Remove="Net.Models\Customer.cs" />
     <Compile Remove="Net.Models\Product.cs" />
     <Compile Remove="Net.Models\RetrieveTransactionResponse.cs" />

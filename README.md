@@ -11,6 +11,7 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 
 ### Installing
  Install this library from [Nuget](https://www.nuget.org/packages/Globalpay.Net.SDK)
+ Or Click on NuGet manager in Visual Studios and search for GlobalPay.Net.SDK
 
 ### Usage
 *    The steps for carrying out a transaction is as follows:
