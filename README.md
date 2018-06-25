@@ -33,7 +33,7 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
 ##### Transaction Initialization
     using GlobalPay.Net;
     var globalPayTransactions = new GlobalPayTransactions(ACCESS_TOKEN);
-    var response = await globalPayTransactions.InitializeTransaction(string _returnurl, string _merchantreference, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName, {optional BOOL isLive : #true for for live enviroment and false for staging default value false})
+    var response = await globalPayTransactions.InitializeTransaction(string _returnurl, string _merchantreference, string _merchantid , string _description, string _totalamount, string _currencycode {currency code i.e NGN for naira}, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName, {optional BOOL isLive : #true for for live enviroment and false for staging default value false})
 
     if(response.status.statusCode){
         Response.AddHeader("Access-Control-Allow-Origin", "*");

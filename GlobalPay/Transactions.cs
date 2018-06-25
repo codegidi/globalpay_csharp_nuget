@@ -17,7 +17,7 @@ namespace GlobalPay.Net
             this._token = token;
         }
 
-        public async Task<TransactionRegistrationResponse> InitializeTransaction(string _returnurl, string _merchantreference, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName, bool isLive) {
+        public async Task<TransactionRegistrationResponse> InitializeTransaction(string _returnurl, string _merchantreference, string _merchantid, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName, bool isLive) {
             var client = HttpConnection.call(_token, isLive);
             List<Product> _products = new List<Product>();
 
@@ -39,6 +39,7 @@ namespace GlobalPay.Net
                 Returnurl = _returnurl,
                 Customerip = "",
                 Merchantreference = _merchantreference,
+                Merchantid = _merchantid,
                 Description = _description,
                 Currencycode = _currencycode,
                 Totalamount = _totalamount,
@@ -49,9 +50,15 @@ namespace GlobalPay.Net
                 Product = _products
             };
 
+            var baseURL = Constants.BaseEndURlStaging + "/api/v3/Payment/SetRequest";
+
+            if (isLive) {
+                baseURL = Constants.BaseEndURlLive + "/api/v3/Payment/SetRequest";
+            }
+
             var requestJson = JsonConvert.SerializeObject(transactionRegistrationRequest);
             var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("/api/v3/Payment/SetRequest", stringContent);
+            var response = await client.PostAsync(baseURL, stringContent);
             var responseJson = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<TransactionRegistrationResponse>(responseJson);
@@ -65,10 +72,15 @@ namespace GlobalPay.Net
                 Transactionreference = _transactionReference,
             };
 
+            var baseURL = Constants.BaseEndURlStaging + "/api/v3/Payment/Retrieve";
+
+            if (isLive) {
+                baseURL = Constants.BaseEndURlLive + "/api/v3/Payment/Retrieve";
+            }
 
             var requestJson = JsonConvert.SerializeObject(_retrieveTransactionRequest);
             var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("/api/v3/Payment/Retrieve", stringContent);
+            var response = await client.PostAsync(baseURL, stringContent);
             var responseJson = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<RetrieveTransactionResponse>(responseJson);

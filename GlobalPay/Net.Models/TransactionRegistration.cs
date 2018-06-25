@@ -5,7 +5,6 @@ using System.Text;
 namespace GlobalPay.Net.Models
 {
     public class TransactionRegistrationRequest {
-        public string Name { get; set; }
         public string Returnurl { get; set; }
         public string Customerip { get; set; }
         public string Merchantreference { get; set; }
