@@ -27,7 +27,7 @@ Globalpay.Net.SDK is a library for using the [Globalpay] API from .Net.
     var globalPayAuthentication = new GlobalPayAuthentication();
     var response = await globalPayAuthentication.AuthenticateClient(string _clientId, string _clientSecret, {optional BOOL isLive : #true for for live enviroment and false for staging default value false})
 
-    var access_token = response.access_token;
+    var access_token = response.Access_token;
 
 
 ##### Transaction Initialization

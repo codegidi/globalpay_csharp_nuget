@@ -7,7 +7,7 @@
     <Product>GlobalPay</Product>
     <PackageId>GlobalPay.Net.SDK</PackageId>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -10,8 +10,7 @@ using System.Net.Http.Headers;
         public static string authURL = Constants.AuthURLStaging;
 
         public static HttpClient call(string secretKey, bool isLive) {
-            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            
+        
             if (isLive) {
                 baseURL =  Constants.BaseEndURlLive;
             }
@@ -19,8 +18,6 @@ using System.Net.Http.Headers;
                 var client = new HttpClient() {
                     BaseAddress = new Uri(baseURL)
                 };
-
-
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue(Constants.ContentTypeHeaderJson));
@@ -34,11 +31,11 @@ using System.Net.Http.Headers;
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             if (isLive) {
-                baseURL = Constants.AuthURLLive;
+                authURL = Constants.AuthURLLive;
             }
 
             var client = new HttpClient() {
-                BaseAddress = new Uri(baseURL)
+                BaseAddress = new Uri(authURL)
             };
 
 
