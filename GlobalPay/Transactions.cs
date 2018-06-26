@@ -50,10 +50,10 @@ namespace GlobalPay.Net
                 Product = _products
             };
 
-            var baseURL = Constants.BaseEndURlStaging + "/api/v3/Payment/SetRequest";
+            var baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/SetRequest";
 
             if (isLive) {
-                baseURL = Constants.BaseEndURlLive + "/api/v3/Payment/SetRequest";
+                baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/SetRequest";
             }
 
             var requestJson = JsonConvert.SerializeObject(transactionRegistrationRequest);
@@ -72,10 +72,10 @@ namespace GlobalPay.Net
                 Transactionreference = _transactionReference,
             };
 
-            var baseURL = Constants.BaseEndURlStaging + "/api/v3/Payment/Retrieve";
+            var baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/Retrieve";
 
             if (isLive) {
-                baseURL = Constants.BaseEndURlLive + "/api/v3/Payment/Retrieve";
+                baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/Retrieve";
             }
 
             var requestJson = JsonConvert.SerializeObject(_retrieveTransactionRequest);

@@ -49,4 +49,6 @@ namespace GlobalPay.Net.Models
         public string Errorparameter { get; set; }
         public string Reason { get; set; }
     }
+
+
 }
