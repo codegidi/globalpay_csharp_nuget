@@ -18,7 +18,7 @@ namespace GlobalPay.Net
         }
 
         public async Task<TransactionRegistrationResponse> InitializeTransaction(string _returnurl, string _merchantreference, string _merchantid, string _description, string _totalamount, string _currencycode, string _customerEmail, string _customerNumber, string _customerFirstName, string _customerLastName, bool isLive) {
-            var client = HttpConnection.call(_token, isLive);
+            var client = HttpConnection.Call(_token, isLive);
             List<Product> _products = new List<Product>();
 
             var _product = new Product {
@@ -50,37 +50,26 @@ namespace GlobalPay.Net
                 Product = _products
             };
 
-            var baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/SetRequest";
-
-            if (isLive) {
-                baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/SetRequest";
-            }
 
             var requestJson = JsonConvert.SerializeObject(transactionRegistrationRequest);
             var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(baseURL, stringContent);
+            var response = await client.PostAsync("/SetRequest", stringContent);
             var responseJson = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<TransactionRegistrationResponse>(responseJson);
         }
 
         public async Task<RetrieveTransactionResponse> RetrieveTransaction(string _merchantId, string _merchantReference, string _transactionReference, bool isLive) {
-            var client = HttpConnection.call(_token, isLive);
+            var client = HttpConnection.Call(_token, isLive);
             var _retrieveTransactionRequest = new RetrieveTransactionRequest {
                 Merchantid = _merchantId,
                 Merchantreference = _merchantReference,
                 Transactionreference = _transactionReference,
             };
 
-            var baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/Retrieve";
-
-            if (isLive) {
-                baseURL = "http://globalpay.azurewebsites.net/api/v3/Payment/Retrieve";
-            }
-
             var requestJson = JsonConvert.SerializeObject(_retrieveTransactionRequest);
             var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(baseURL, stringContent);
+            var response = await client.PostAsync("/Retrieve", stringContent);
             var responseJson = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<RetrieveTransactionResponse>(responseJson);

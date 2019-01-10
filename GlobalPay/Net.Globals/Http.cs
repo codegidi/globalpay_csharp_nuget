@@ -9,7 +9,7 @@ using System.Net.Http.Headers;
 
         public static string authURL = Constants.AuthURLStaging;
 
-        public static HttpClient call(string secretKey, bool isLive) {
+        public static HttpClient Call(string secretKey, bool isLive) {
         
             if (isLive) {
                 baseURL =  Constants.BaseEndURlLive;
@@ -27,7 +27,7 @@ using System.Net.Http.Headers;
             return client;
             }
 
-        public static HttpClient callClient(bool isLive) {
+        public static HttpClient CallClient(bool isLive) {
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             if (isLive) {
