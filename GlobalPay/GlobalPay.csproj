@@ -6,10 +6,10 @@
     <Company>May Davison Tech</Company>
     <Product>GlobalPay</Product>
     <PackageId>GlobalPay.Net.SDK</PackageId>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.2.4</Version>
-    <AssemblyVersion>1.2.4.0</AssemblyVersion>
-    <FileVersion>1.2.4.0</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.3.1</Version>
+    <AssemblyVersion>1.3.1.0</AssemblyVersion>
+    <FileVersion>1.3.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
